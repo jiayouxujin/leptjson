@@ -36,18 +36,18 @@ static int lept_parse_number(lept_context* c, lept_value* v) {
     if (*p == '0') p++;
     else {
         if (!ISDIGIT1TO9(*p)) return LEPT_PARSE_INVALID_VALUE;
-        for (p++; ISDIGIT(*p); p++);
+        for (p++; ISDIGIT(*p); p++) ;
     }
     if (*p == '.') {
         p++;
         if (!ISDIGIT(*p)) return LEPT_PARSE_INVALID_VALUE;
-        for (p++; ISDIGIT(*p); p++);
+        for (p++; ISDIGIT(*p); p++) ;
     }
     if (*p == 'e' || *p == 'E') {
         p++;
         if (*p == '+' || *p == '-') p++;
         if (!ISDIGIT(*p)) return LEPT_PARSE_INVALID_VALUE;
-        for (p++; ISDIGIT(*p); p++);
+        for (p++; ISDIGIT(*p); p++) ;
     }
     errno = 0;
     v->n = strtod(c->json, NULL);
